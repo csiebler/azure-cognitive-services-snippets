@@ -1,0 +1,35 @@
+#
+# This example all documents inside a blob container from one lanugage to another
+# You can either use a Managed Identity to storage access, or leverage SAS URLs to your source and target blob containers
+# Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/document-translation/overview
+#
+
+##### This request initates the document translation process
+
+# @name translate_documents
+POST {{translator_endpoint}}/translator/text/batch/v1.0/batches
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{translator_key}}
+
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://csdemo42.blob.core.windows.net/translate"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://csdemo42.blob.core.windows.net/translateresults",
+                    "language": "de"
+                }
+            ]
+        }
+    ]
+}
+
+##### This request queries the status of the document translation operation
+
+# @name get_results
+GET {{translate_documents.response.headers.Operation-Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{translator_key}}

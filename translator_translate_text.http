@@ -1,0 +1,20 @@
+#
+# This example translate one or multiple documents from one lanugage into multiple others
+# Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/text-translation-overview
+#
+
+##### This request performs the translation process
+
+# @name translate_text
+POST https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
+     &from=en
+     &to=de,nl
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{translator_key}}
+Ocp-Apim-Subscription-Region: {{translator_region}}
+
+[
+    {
+        "text": "Translator is a cloud-based neural machine translation service that is part of the Azure Cognitive Services family of REST APIs. Translator can be used with any operating system and powers many Microsoft products and services used by thousands of businesses worldwide to perform language translation and other language-related operations. In this overview, you'll learn how Translator can enable you to build intelligent, multi-language solutions for your applications across all supported languages."
+    }
+]

@@ -3,7 +3,7 @@
 # Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/extractive-summarization
 #
 
-##### This request kicks off the summarization process
+##### This request initiates the summarization process
 
 # @name summarize_text
 POST {{cognitive_services_endpoint}}/text/analytics/v3.2-preview.1/analyze

@@ -1,14 +1,13 @@
 #
-# This example summerizes text using Azure Text Analytics Extractive Summerization
+# This example summarizes text using Azure Text Analytics Extractive Summarization
 # Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/extractive-summarization
 #
 
-##### This request kicks off the summerization process
+##### This request kicks off the summarization process
 
-# @name summerize_text
+# @name summarize_text
 POST {{cognitive_services_endpoint}}/text/analytics/v3.2-preview.1/analyze
 Content-Type: application/json
-Accept: application/json
 Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
 
 {
@@ -39,10 +38,9 @@ Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
   }
 }
 
-##### This request queries the summerizatoin results
+##### This request queries the summarization results
 
 # @name get_results
-GET {{summerize_text.response.headers.operation-location}}
+GET {{summarize_text.response.headers.operation-location}}
 Content-Type: application/json
-Accept: application/json
 Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

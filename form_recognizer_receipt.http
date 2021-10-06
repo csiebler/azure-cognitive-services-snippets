@@ -1,0 +1,22 @@
+#
+# This example reads receipts using the pre-built Form Recognizer Receipt service
+# Documentation: https://docs.microsoft.com/en-us/azure/applied-ai-services/form-recognizer/quickstarts/get-started-with-form-recognizer#analyze-using-a-prebuilt-model-invoices-receipts-ids-
+#
+
+##### This request initates the receipt reading
+
+# @name read_receipt
+POST {{cognitive_services_endpoint}}/formrecognizer/v2.1/prebuilt/receipt/analyze
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+    "source": "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/contoso-receipt.png"
+}
+
+##### This request queries the status of the receipt operation
+
+# @name get_results
+GET {{read_receipt.response.headers.Operation-Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

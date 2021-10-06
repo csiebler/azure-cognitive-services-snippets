@@ -1,0 +1,22 @@
+#
+# This example reads business cards using the pre-built Form Recognizer Business Card service
+# Documentation: https://docs.microsoft.com/en-us/azure/applied-ai-services/form-recognizer/quickstarts/get-started-with-form-recognizer#analyze-using-a-prebuilt-model-invoices-receipts-ids-
+#
+
+##### This request initates the business card reading
+
+# @name read_card
+POST {{cognitive_services_endpoint}}/formrecognizer/v2.1/prebuilt/businessCard/analyze
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+    "source": "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/businessCard.png"
+}
+
+##### This request queries the status of the read operation
+
+# @name get_results
+GET {{read_card.response.headers.Operation-Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

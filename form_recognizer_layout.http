@@ -1,0 +1,22 @@
+#
+# This example extracts layout details (tables, documents structure, etc.) from documents using the Form Recognizer Layout service
+# Documentation: https://docs.microsoft.com/en-us/azure/applied-ai-services/form-recognizer/quickstarts/get-started-with-form-recognizer#analyze-using-a-prebuilt-model-invoices-receipts-ids-
+#
+
+##### This request initates the layout extraction
+
+# @name extract_layout
+POST {{cognitive_services_endpoint}}/formrecognizer/v2.1/layout/analyze
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+    "source": "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/sample-layout.pdf"
+}
+
+##### This request queries the status of the layout operation
+
+# @name get_results
+GET {{extract_layout.response.headers.Operation-Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

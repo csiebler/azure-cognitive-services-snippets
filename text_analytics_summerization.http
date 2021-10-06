@@ -1,0 +1,48 @@
+#
+# This example summerizes text using Azure Text Analytics Extractive Summerization
+# Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/extractive-summarization
+#
+
+##### This request kicks off the summerization process
+
+# @name summerize_text
+POST {{cognitive_services_endpoint}}/text/analytics/v3.2-preview.1/analyze
+Content-Type: application/json
+Accept: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+  "analysisInput": {
+    "documents": [
+      {
+        "language": "en",
+        "id": "1",
+        "text": "Translator is a cloud-based neural machine translation service that is part of the Azure Cognitive Services family of REST APIs. Translator can be used with any operating system and powers many Microsoft products and services used by thousands of businesses worldwide to perform language translation and other language-related operations. In this overview, you'll learn how Translator can enable you to build intelligent, multi-language solutions for your applications across all supported languages."
+      },
+      {
+        "language": "de",
+        "id": "2",
+        "text": "Der Übersetzer ist ein cloudbasierter Dienst für neuronale maschinelle Übersetzung, der zur Azure Cognitive Services-Familie der REST-APIs gehört. Der Übersetzer kann mit jedem Betriebssystem verwendet werden und unterstützt viele Microsoft-Produkte und -Dienste, die von Tausenden von Unternehmen weltweit verwendet werden, um Sprachübersetzungen und andere sprachbezogene Vorgänge durchzuführen. In dieser Übersicht erfahren Sie, wie Sie mit dem Übersetzer intelligente, mehrsprachige Lösungen für Ihre Anwendungen in allen unterstützten Sprachen erstellen können."
+      }
+    ]
+  },
+  "tasks": {
+    "extractiveSummarizationTasks": [
+      {
+        "parameters": {
+          "model-version": "latest",
+          "sentenceCount": 2,
+          "sortBy": "Rank"
+        }
+      }
+    ]
+  }
+}
+
+##### This request queries the summerizatoin results
+
+# @name get_results
+GET {{summerize_text.response.headers.operation-location}}
+Content-Type: application/json
+Accept: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

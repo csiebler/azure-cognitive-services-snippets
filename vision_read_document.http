@@ -1,0 +1,25 @@
+#
+# This example performs Optical Character Recognition on an image using the Read API
+# Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr
+#
+
+##### This request initates the OCR process using the Read API
+
+# @name read_document
+POST {{cognitive_services_endpoint}}/vision/v3.2/read/analyze
+     ?language=en
+     &pages=1
+     &readingOrder=natural
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+    "url": "https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/description.png"
+}
+
+##### This request queries the status of the Read API operation
+
+# @name get_results
+GET {{read_document.response.headers.Operation-Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

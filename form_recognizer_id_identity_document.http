@@ -1,0 +1,22 @@
+#
+# This example reads an identity document (id) using the pre-trained Form Recognizer Id service
+# Documentation: https://docs.microsoft.com/en-us/azure/applied-ai-services/form-recognizer/quickstarts/get-started-with-form-recognizer#analyze-using-a-prebuilt-model-invoices-receipts-ids-
+#
+
+##### This request initates the Id reading process
+
+# @name read_id
+POST {{cognitive_services_endpoint}}/formrecognizer/v2.1/prebuilt/idDocument/analyze
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+    "source": "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/id-license.jpg"
+}
+
+##### This request queries the status of the Read API operation
+
+# @name get_results
+GET {{read_id.response.headers.Operation-Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

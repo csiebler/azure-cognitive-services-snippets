@@ -3,7 +3,7 @@ import time
 import requests
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('COMPUTER_VISION_ENDPOINT', 'https://<your_custom_translator_hostname>.cognitiveservices.azure.com')
+endpoint = os.getenv('COMPUTER_VISION_ENDPOINT', 'https://<your_computer_vision_hostname>.cognitiveservices.azure.com')
 
 # Define strategy which potential authentication methods should be tried to gain an access token
 credential = ChainedTokenCredential(ManagedIdentityCredential(), AzureCliCredential())

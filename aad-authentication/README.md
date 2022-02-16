@@ -1,5 +1,7 @@
 # Python code snippets for AAD (Azure Active Directory) authentication
 
+If you are looking for a deeper explaination, have a look at this [blog post](https://clemenssiebler.com/azure-active-directory-aad-authentication-for-azure-cognitive-services/).
+
 ## Instructions
 
 1. Create the desired Cognitive Service resource

@@ -13,7 +13,9 @@
             "cognitive_services_key": "<Your Cognitive Service resource key>",
             "translator_endpoint": "https://<your Translator resource name>.cognitiveservices.azure.com", # optional, only required when using Translator
             "translator_key": "<your Translator resource key>", # optional, only required when using Translator
-            "translator_region": "<your Translator resource location>" # optional, e.g. westeurope - only required when using Translator
+            "translator_region": "<your Translator resource location>", # optional, e.g. westeurope - only required when using Translator
+            "search_instance_name": "<name of your search instance>", # optional, only required when using Azure Cognitive Search
+            "search_query_key": "<search instance query key>" # optional, only required when using Azure Cognitive Search
         }
     ```
 1. Open one of the `*.http` files and run the requests inside VSCode

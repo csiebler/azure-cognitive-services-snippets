@@ -1,0 +1,18 @@
+
+#
+# This is a simple example to send queries to Azure Cognitive Search
+# Documentation: https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents
+#
+
+##### This request sends a simple query to Azure Cognitive Search
+
+# @name query_index
+POST https://{{search_instance_name}}.search.windows.net/indexes/transcription-index/docs/search?api-version=2020-06-30
+api-key: {{search_query_key}}
+Content-Type: application/json
+
+{
+    "search": "*",
+    "queryType": "simple",
+    "count": "true"
+}

@@ -20,18 +20,19 @@ Ocp-Apim-Subscription-Region: {{translator_region}}
 ]
 
 
-##### This request performs the translation process
+#### This request performs the translation process using a Custom Translator model
 
-# @name translate_text
+# @name translate_text_custom
 POST https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
      &from=en
      &to=de
+     &category=<paste your custom model id here>
 Content-Type: application/json
 Ocp-Apim-Subscription-Key: {{translator_key}}
 Ocp-Apim-Subscription-Region: {{translator_region}}
 
 [
     {
-        "text": "I was eating Turkey last week. This week I've travelled to Turkey."
+        "text": "Last week I was in Turkey, this week I am eating a turkey!"
     }
 ]

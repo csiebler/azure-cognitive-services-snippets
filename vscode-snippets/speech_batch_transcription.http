@@ -1,0 +1,51 @@
+
+#
+# This example transcribes all audio files (mp3, wav) in a blob container and puts the transcription into a new container
+# For large sclae transcription, rather use the Ingestion clien from https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/ingestion-client
+# 
+# Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/batch-transcription
+# Limitations: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-services-quotas-and-limits
+#
+
+##### This request initates the batch transcription
+
+# @name start_transcription
+POST {{cognitive_services_endpoint}}/speechtotext/v3.0/transcriptions
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+{
+  "contentUrls": [
+      "<put mp3 or wav file here>"
+  ],
+  "properties": {
+    "wordLevelTimestampsEnabled": true,
+    "diarizationEnabled": true,
+    "channels": [0]
+  },
+  "locale": "de-DE",
+  "displayName": "Transcription of files in a Blob container"
+}
+
+##### This request queries the status of the batch transcription
+
+# @name get_results
+GET {{start_transcription.response.headers.Location}}
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+##### This request shows the output files for the batch transcription
+
+# @name get_files
+GET {{start_transcription.response.headers.Location}}/files
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+##### First file a report on all the files processed and their status (report.json)
+
+GET {{get_files.response.body.values[0].links.contentUrl}}
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+
+#### Subsequent files are the transcription of the audio files (contenturl_*.json)
+
+GET {{get_files.response.body.values[1].links.contentUrl}}
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}

@@ -21,7 +21,9 @@ Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
   "properties": {
     "wordLevelTimestampsEnabled": true,
     "diarizationEnabled": true,
-    "channels": [0]
+    "channels": [0],
+    "timeToLive": "PT12H",
+    "destinationContainerUrl": "<Put SAS container URL here>"
   },
   "locale": "de-DE",
   "displayName": "Transcription of files in a Blob container"

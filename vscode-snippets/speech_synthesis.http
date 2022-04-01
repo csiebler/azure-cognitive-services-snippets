@@ -1,0 +1,18 @@
+
+#
+# This example synthesizes audio from text using Azure Text-to-Speech API.
+# For more output formats and voices, please check: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#convert-text-to-speech
+#
+
+##### This request synthesizes the audio
+
+# @name synthesize_speech
+POST https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+X-Microsoft-OutputFormat: audio-48khz-96kbitrate-mono-mp3
+Content-Type: application/ssml+xml
+
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Male'
+    name='en-US-ChristopherNeural'>
+        Hello, I'm a robot speaking like a human.
+</voice></speak>

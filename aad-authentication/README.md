@@ -23,6 +23,7 @@ export COGNITIVE_SEARCH_ENDPOINT=https://<replace>.search.windows.net
 export CUSTOM_VISION_PREDICTION_ENDPOINT=https://<replace>.cognitiveservices.azure.com
 export FACE_ENDPOINT=https://<replace>.cognitiveservices.azure.com
 export LUIS_ENDPOINT=https://<replace>.cognitiveservices.azure.com
+export OPENAI_ENDPOINT=https://<replace>.openai.azure.com
 export SPEECH_RESOURCE=/subscriptions/<replace>/resourceGroups/<replace>/providers/Microsoft.CognitiveServices/accounts/<replace>
 ```
 
@@ -39,5 +40,6 @@ $env:COGNITIVE_SEARCH_ENDPOINT = "https://<replace>.search.windows.net"
 $env:CUSTOM_VISION_PREDICTION_ENDPOINT = "https://<replace>.cognitiveservices.azure.com"
 $env:FACE_ENDPOINT = "https://<replace>.cognitiveservices.azure.com"
 $env:LUIS_ENDPOINT = "https://<replace>.cognitiveservices.azure.com"
+$env:OPENAI_ENDPOINT = "https://<replace>.openai.azure.com"
 $env:SPEECH_RESOURCE = "/subscriptions/<replace>/resourceGroups/<replace>/providers/Microsoft.CognitiveServices/accounts/<replace>"
 ```

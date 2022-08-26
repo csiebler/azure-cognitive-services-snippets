@@ -1,0 +1,30 @@
+#
+# This example transliterates one script to another
+# Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-transliterate
+#
+
+### To get all supported transliteration scripts 
+
+# @name get_supported_transliterations
+GET https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
+     &scope=transliteration
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{translator_key}}
+Ocp-Apim-Subscription-Region: {{translator_region}}
+
+##### This request performs the transliteration process
+
+# @name transliterate_text
+POST https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
+     &language=he
+     &fromScript=Hebr
+     &toScript=Latn
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{translator_key}}
+Ocp-Apim-Subscription-Region: {{translator_region}}
+
+[
+    {
+        "text": "תפוח"
+    }
+]

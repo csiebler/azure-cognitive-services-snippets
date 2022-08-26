@@ -3,6 +3,15 @@
 # Documentation: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/text-translation-overview
 #
 
+##### Get the supported translation language pairs
+
+# @name get_supported_translation_languages
+GET https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
+     &scope=translation
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{translator_key}}
+Ocp-Apim-Subscription-Region: {{translator_region}}
+
 ##### This request performs the translation process
 
 # @name translate_text

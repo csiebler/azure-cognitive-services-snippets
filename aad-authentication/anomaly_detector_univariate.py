@@ -1,8 +1,11 @@
 import os
 import requests
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('ANOMALY_DETECTOR_ENDPOINT', 'https://<your_anomaly_detector_hostname>.cognitiveservices.azure.com')
+load_dotenv()
+
+endpoint = os.getenv('ANOMALY_DETECTOR_ENDPOINT')
 
 # Define strategy which potential authentication methods should be tried to gain an access token
 credential = ChainedTokenCredential(ManagedIdentityCredential(), AzureCliCredential())

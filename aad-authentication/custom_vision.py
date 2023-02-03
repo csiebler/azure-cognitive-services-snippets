@@ -1,8 +1,11 @@
 import os
 import requests
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('CUSTOM_VISION_PREDICTION_ENDPOINT', 'https://<your_custom_vision_prediction_hostname>.cognitiveservices.azure.com')
+load_dotenv()
+
+endpoint = os.getenv('CUSTOM_VISION_PREDICTION_ENDPOINT')
 project_id = "70377e33-aacd-43fd-bf2a-92c5501acb6f" # Replace with your project id
 published_name = "Iteration1" # Replace with your published name
 

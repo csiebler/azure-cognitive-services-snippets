@@ -1,10 +1,13 @@
 import os
 import time
 import requests
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('OPENAI_ENDPOINT', 'https://"<openai service name>".openai.azure.com')
-deployment = "text-davinci-001"
+load_dotenv()
+
+endpoint = os.getenv('OPENAI_ENDPOINT')
+deployment = "text-davinci-003"
 
 # Define strategy which potential authentication methods should be tried to gain an access token
 credential = ChainedTokenCredential(ManagedIdentityCredential(), AzureCliCredential())
@@ -31,7 +34,7 @@ payload = {
     "max_tokens": 50,
     "temperature": 1,
     "top_p": 1,
-    "echo": True,
+    "echo": False,
     "n": 1,
     "stop": ["##"],
     "frequency_penalty": 1,
@@ -39,9 +42,8 @@ payload = {
 }
 
 params = {
-  'api-version': '2021-11-01-preview'
+  'api-version': '2022-12-01'
 }
-
 r = requests.post(url=f"{endpoint}/openai/deployments/{deployment}/completions", headers=headers, params=params, json=payload)
 
 print(f"Status code: {r.status_code}")

@@ -1,8 +1,11 @@
 import os
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 import azure.cognitiveservices.speech as speechsdk
 
-resource_id = os.getenv('SPEECH_RESOURCE', '/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.CognitiveServices/accounts/<speech_resource_name>')
+load_dotenv()
+
+resource_id = os.getenv('SPEECH_RESOURCE')
 region = "westeurope" # update to your region
 
 credential = ChainedTokenCredential(ManagedIdentityCredential(), AzureCliCredential())

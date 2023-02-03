@@ -1,8 +1,11 @@
 import os
 import requests
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('COGNITIVE_SEARCH_ENDPOINT', 'https://<your_search_hostname>.search.windows.net')
+load_dotenv()
+
+endpoint = os.getenv('COGNITIVE_SEARCH_ENDPOINT')
 index_name = "transcription-index" # Update with your index name
 query = "*"
 

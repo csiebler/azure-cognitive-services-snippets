@@ -1,9 +1,12 @@
 import os
 import time
 import requests
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('FORM_RECOGNIZER_ENDPOINT', 'https://<your_form_recognizer_hostname>.cognitiveservices.azure.com')
+load_dotenv()
+
+endpoint = os.getenv('FORM_RECOGNIZER_ENDPOINT')
 
 # Define strategy which potential authentication methods should be tried to gain an access token
 credential = ChainedTokenCredential(ManagedIdentityCredential(), AzureCliCredential())

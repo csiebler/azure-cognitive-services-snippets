@@ -1,8 +1,11 @@
 import os
 import requests
+from dotenv import load_dotenv
 from azure.identity import AzureCliCredential, ChainedTokenCredential, ManagedIdentityCredential
 
-endpoint = os.getenv('LUIS_ENDPOINT', 'https://<your_luis_hostname>.cognitiveservices.azure.com')
+load_dotenv()
+
+endpoint = os.getenv('LUIS_ENDPOINT')
 model_id = "beadbdb2-cde2-49a5-8780-4989ae913000" # Update with your model id
 slot = "production"
 

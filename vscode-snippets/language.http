@@ -1,0 +1,87 @@
+
+#
+# This document contains examples for Azure AI Languages API
+# For more details see https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview
+#
+
+##### This request detects the language
+
+# @name detect_language
+POST {{cognitive_services_endpoint}}/language/:analyze-text?api-version=2023-11-15-preview
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+Content-Type: application/json
+
+{
+    "kind": "LanguageDetection",
+    "parameters": {
+        "modelVersion": "latest"
+    },
+    "analysisInput":{
+        "documents":[
+            {
+                "id":"1",
+                "text": "This is a document written in English."
+            },
+            {
+                "id":"2",
+                "text": "Dieser Text ist in deutsch."
+            },
+            {
+                "id":"3",
+                "text": "Dieser Text ist gemischt. This text uses multiple languages."
+            },
+        ]
+    }
+}
+
+
+##### This request extracts key phrases, if language field is ommited, it will default to English
+
+# @name extract_key_phrases
+POST {{cognitive_services_endpoint}}/language/:analyze-text?api-version=2023-11-15-preview
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+Content-Type: application/json
+
+{
+    "kind": "KeyPhraseExtraction",
+    "parameters": {
+        "modelVersion": "latest"
+    },
+    "analysisInput":{
+        "documents":[
+            {
+                "id":"1",
+                "language":"en",
+                "text": "Dr. Smith has a very modern medical office, and she has great staff."
+            },
+            {
+                "id":"2",
+                "language":"de",
+                "text": "Ich war gestern im Schwimmbad."
+            }
+        ]
+    }
+}
+
+##### This request performs Named Entity Recognition, if language field is ommited, it will default to English
+
+# @name named_entities_recognition
+POST {{cognitive_services_endpoint}}/language/:analyze-text?api-version=2023-11-15-preview
+Ocp-Apim-Subscription-Key: {{cognitive_services_key}}
+Content-Type: application/json
+
+{
+    "kind": "EntityRecognition",
+    "parameters": {
+        "modelVersion": "latest"
+    },
+    "analysisInput":{
+        "documents":[
+            {
+                "id":"1",
+                "language": "en",
+                "text": "I had a wonderful trip to Seattle last week."
+            }
+        ]
+    }
+}
